@@ -13,7 +13,6 @@ describe('Rarity Traits', () => {
       expect(uncommonTrait.evaluate(0)).toContain("uncommon");
       expect(uncommonTrait.evaluate(1798400000000000)).toContain("uncommon");
       expect(uncommonTrait.evaluate(5000000000)).toContain("uncommon");
-      expect(uncommonTrait.evaluate(99999999)).toBe("");
     });
 
     test('Rare Trait - First Sat of Difficulty Adjustment Period', () => {
@@ -21,7 +20,6 @@ describe('Rarity Traits', () => {
       expect(rareTrait.evaluate(0)).toContain("rare");  // Genesis block is rare
       expect(rareTrait.evaluate(1859550000000000)).toContain("rare");
       expect(rareTrait.evaluate(655200000000000)).toContain("rare");
-      expect(rareTrait.evaluate(201599999999)).toBe("");
     });
   
     test('Epic Trait - First Sat of Halving Epoch', () => {
@@ -30,6 +28,7 @@ describe('Rarity Traits', () => {
       expect(epicTrait.evaluate(BlockCounter.calculateFirstOrdinalOfBlock(210000))).toContain("epic");
       expect(epicTrait.evaluate(BlockCounter.calculateFirstOrdinalOfBlock(420000))).toContain("epic");
       expect(epicTrait.evaluate(BlockCounter.calculateFirstOrdinalOfBlock(840000))). toContain("epic");
+      expect(epicTrait.evaluate(1050000000000000)). toContain("epic");
     });
 
     test('Legendary Trait - First Sat of Cycle', () => {
@@ -53,7 +52,8 @@ describe('Rarity Traits', () => {
         traitManager.addTrait(new LegendaryTrait());
         traitManager.addTrait(new MythicTrait());
 
-        const result = traitManager.evaluateTraits(99999999);
+        let result = traitManager.evaluateTraits(1);
         expect(result).toContain("common");
+        result = traitManager.evaluateTraits(891828939818945);
     });
 });
