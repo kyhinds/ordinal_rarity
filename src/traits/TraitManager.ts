@@ -8,15 +8,29 @@ export class TraitManager {
   addTrait(trait: ITrait): void {
     this.traits.push(trait);
   }
-  // ordinals can have multiple traits, so we evaluate all traits and return the results
+
   evaluateTraits(ordinal: number): string[] {
-    const results = this.traits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
+    // Define priorities with an index signature
+    const priority: { [key: string]: number } = {
+      mythic: 5,
+      legendary: 4,
+      epic: 3,
+      rare: 2,
+      uncommon: 1,
+      common: 0
+    };
 
-    // If no specific traits are found, return "common"
-    if (results.length === 0) {
-      results.push("common");
-    }
+    let results = this.traits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
 
-    return results;
+    // Find the highest-ranking rarity based on the defined priority
+    let highestPriority = "common";  // Default to common
+    results.forEach(rarity => {
+      if (priority[rarity] > priority[highestPriority]) {
+        highestPriority = rarity;
+      }
+    });
+
+    // Return ["common"] if no specific traits are found, else return the highest priority rarity
+    return highestPriority === "common" && results.length === 0 ? ["common"] : [highestPriority];
   }
 }
