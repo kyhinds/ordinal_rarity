@@ -40,13 +40,13 @@ npm install
 To evaluate the rarity of an ordinal number, run the following command:
 
 ```bash
-npx ts-node src/cli.ts <ordinal>
+node dist/index.js
 ```
 
 ### Example
 
 ```bash
-npx ts-node src/cli.ts 5000000000
+Enter an ordinal number (or type "exit" to quit): 5000000000
 ```
 
 Output:
@@ -66,10 +66,10 @@ npx jest
 ## Project Structure
 
 - **src/**: Source code for the project.
-    - **traits/**: Contains the modular trait classes.
-    - **utils/**: Contains utility functions.
-    - **cli.ts**: Command-line interface for the project.
-    - **TraitManager.ts**: Manages the evaluation of traits.
+    - **model/traits/**: Contains the modular trait classes.
+    - **model/traits/TraitManager.ts**: Manages the evaluation of traits.
+    - **controller/utils/**: Contains utility functions.
+    - **index.ts**: Command-line interface for the project.
 - **tests/**: Test cases for the project.
 - **jest.config.js**: Configuration for Jest testing framework.
 - **tsconfig.json**: TypeScript configuration file.
