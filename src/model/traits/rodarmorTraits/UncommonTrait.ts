@@ -1,6 +1,6 @@
 // src/traits/UncommonTrait.ts
 import { ITrait } from "../ITrait";
-import { BlockCounter } from '../../utils/BlockCounter';
+import { BlockCounter } from '../../../controller/utils/BlockCounter';
 
 export class UncommonTrait implements ITrait {
   static initialReward = 5000000000; // Initial reward in sats (50 BTC)

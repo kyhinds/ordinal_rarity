@@ -36,7 +36,7 @@ export class TraitManager {
     this.extraTraits.push(trait);
   }
 
-  evaluateTraits(ordinal: number): string[] {
+  evaluateTraits(ordinal: number): string[] { // we evaluate all the traits for an ordinal
     let results = this.traits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
     let extraResults = this.extraTraits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
 
@@ -49,6 +49,7 @@ export class TraitManager {
       "common": 0
     };
 
+    // Find the highest priority result as we return only one rodarmor trait, then we add any extra results
     let highestPriorityResult = results.length > 0 ? results.reduce((a, b) => priority[a] > priority[b] ? a : b) : "common";
     let finalResults = [highestPriorityResult, ...extraResults].filter((value, index, self) => self.indexOf(value) === index);
 

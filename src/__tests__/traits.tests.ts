@@ -1,10 +1,10 @@
-import { TraitManager } from '../traits/TraitManager';
-import { UncommonTrait } from '../traits/rodarmorTraits/UncommonTrait';
-import { RareTrait } from '../traits/rodarmorTraits/RareTrait';
-import { EpicTrait } from '../traits/rodarmorTraits/EpicTrait';
-import { LegendaryTrait } from '../traits/rodarmorTraits/LegendaryTrait';
-import { MythicTrait } from '../traits/rodarmorTraits/MythicTrait';
-import { BlockCounter } from '../utils/BlockCounter';
+import { TraitManager } from '../model/traits/TraitManager';
+import { UncommonTrait } from '../model/traits/rodarmorTraits/UncommonTrait';
+import { RareTrait } from '../model/traits/rodarmorTraits/RareTrait';
+import { EpicTrait } from '../model/traits/rodarmorTraits/EpicTrait';
+import { LegendaryTrait } from '../model/traits/rodarmorTraits/LegendaryTrait';
+import { MythicTrait } from '../model/traits/rodarmorTraits/MythicTrait';
+import { BlockCounter } from '../controller/utils/BlockCounter';
 
 describe('Rarity Traits', () => {
 
