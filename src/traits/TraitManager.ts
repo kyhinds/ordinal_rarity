@@ -1,36 +1,57 @@
 // src/TraitManager.ts
 
 import { ITrait } from './ITrait';
+import { UncommonTrait } from './rodarmorTraits/UncommonTrait';
+import { RareTrait } from './rodarmorTraits/RareTrait';
+import { EpicTrait } from './rodarmorTraits/EpicTrait';
+import { LegendaryTrait } from './rodarmorTraits/LegendaryTrait';
+import { MythicTrait } from './rodarmorTraits/MythicTrait';
+import { PalindromeTrait } from './extraTraits/PalindromeTrait';
+import { Block9Trait } from './extraTraits/Block9Trait';
+import { Block78Trait } from './extraTraits/Block78Trait';
 
 export class TraitManager {
   private traits: ITrait[] = [];
+  private extraTraits: ITrait[] = [];
+
+  constructor() {
+    // Initialize Rodarmor Traits
+    this.addTrait(new UncommonTrait());
+    this.addTrait(new RareTrait());
+    this.addTrait(new EpicTrait());
+    this.addTrait(new LegendaryTrait());
+    this.addTrait(new MythicTrait());
+
+    // Initialize Extra Traits
+    this.addExtraTrait(new PalindromeTrait());
+    this.addExtraTrait(new Block9Trait());
+    this.addExtraTrait(new Block78Trait());
+  }
 
   addTrait(trait: ITrait): void {
     this.traits.push(trait);
   }
 
+  addExtraTrait(trait: ITrait): void {
+    this.extraTraits.push(trait);
+  }
+
   evaluateTraits(ordinal: number): string[] {
-    // Define priorities with an index signature
+    let results = this.traits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
+    let extraResults = this.extraTraits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
+
     const priority: { [key: string]: number } = {
-      mythic: 5,
-      legendary: 4,
-      epic: 3,
-      rare: 2,
-      uncommon: 1,
-      common: 0
+      "mythic": 5,
+      "legendary": 4,
+      "epic": 3,
+      "rare": 2,
+      "uncommon": 1,
+      "common": 0
     };
 
-    let results = this.traits.map(trait => trait.evaluate(ordinal)).filter(result => result !== "");
+    let highestPriorityResult = results.length > 0 ? results.reduce((a, b) => priority[a] > priority[b] ? a : b) : "common";
+    let finalResults = [highestPriorityResult, ...extraResults].filter((value, index, self) => self.indexOf(value) === index);
 
-    // Find the highest-ranking rarity based on the defined priority
-    let highestPriority = "common";  // Default to common
-    results.forEach(rarity => {
-      if (priority[rarity] > priority[highestPriority]) {
-        highestPriority = rarity;
-      }
-    });
-
-    // Return ["common"] if no specific traits are found, else return the highest priority rarity
-    return highestPriority === "common" && results.length === 0 ? ["common"] : [highestPriority];
+    return finalResults.length > 0 ? finalResults : ["common"];
   }
 }
