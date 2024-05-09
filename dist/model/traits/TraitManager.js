@@ -7,10 +7,6 @@ const RareTrait_1 = require("./rodarmorTraits/RareTrait");
 const EpicTrait_1 = require("./rodarmorTraits/EpicTrait");
 const LegendaryTrait_1 = require("./rodarmorTraits/LegendaryTrait");
 const MythicTrait_1 = require("./rodarmorTraits/MythicTrait");
-const PalindromeTrait_1 = require("./extraTraits/PalindromeTrait");
-const Block9Trait_1 = require("./extraTraits/Block9Trait");
-const Block78Trait_1 = require("./extraTraits/Block78Trait");
-const VintageTrait_1 = require("./extraTraits/VintageTrait");
 class TraitManager {
     constructor() {
         this.traits = [];
@@ -22,10 +18,10 @@ class TraitManager {
         this.addTrait(new LegendaryTrait_1.LegendaryTrait());
         this.addTrait(new MythicTrait_1.MythicTrait());
         // Initialize Extra Traits
-        this.addExtraTrait(new PalindromeTrait_1.PalindromeTrait());
-        this.addExtraTrait(new Block9Trait_1.Block9Trait());
-        this.addExtraTrait(new Block78Trait_1.Block78Trait());
-        this.addExtraTrait(new VintageTrait_1.VintageTrait());
+        // this.addExtraTrait(new PalindromeTrait());
+        // this.addExtraTrait(new Block9Trait());
+        // this.addExtraTrait(new Block78Trait());
+        // this.addExtraTrait(new VintageTrait());
     }
     addTrait(trait) {
         this.traits.push(trait);
