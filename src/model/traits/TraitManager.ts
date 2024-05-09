@@ -9,6 +9,7 @@ import { MythicTrait } from './rodarmorTraits/MythicTrait';
 import { PalindromeTrait } from './extraTraits/PalindromeTrait';
 import { Block9Trait } from './extraTraits/Block9Trait';
 import { Block78Trait } from './extraTraits/Block78Trait';
+import { VintageTrait } from './extraTraits/VintageTrait';
 
 export class TraitManager {
   private traits: ITrait[] = [];
@@ -26,6 +27,7 @@ export class TraitManager {
     // this.addExtraTrait(new PalindromeTrait());
     // this.addExtraTrait(new Block9Trait());
     // this.addExtraTrait(new Block78Trait());
+    // this.addExtraTrait(new VintageTrait());
   }
 
   addTrait(trait: ITrait): void {

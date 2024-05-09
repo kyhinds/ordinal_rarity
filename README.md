@@ -35,6 +35,14 @@ To install the necessary dependencies, run:
 npm install
 ```
 
+## Building
+
+To rebuild the project, run the following command:
+
+```bash
+npx tsc
+```
+
 ## Usage
 
 To evaluate the rarity of an ordinal number, run the following command:
@@ -63,6 +71,15 @@ To run the test suite, use:
 npx jest
 ```
 
+## Extra Traits
+
+Uncomment these in TraitManager to add extra traits
+
+// this.addExtraTrait(new PalindromeTrait());
+// this.addExtraTrait(new Block9Trait());
+// this.addExtraTrait(new Block78Trait());
+// this.addExtraTrait(new VintageTrait());
+  
 ## Project Structure
 
 - **src/**: Source code for the project.
