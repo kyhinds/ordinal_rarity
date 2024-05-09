@@ -23,9 +23,9 @@ export class TraitManager {
     this.addTrait(new MythicTrait());
 
     // Initialize Extra Traits
-    this.addExtraTrait(new PalindromeTrait());
-    this.addExtraTrait(new Block9Trait());
-    this.addExtraTrait(new Block78Trait());
+    // this.addExtraTrait(new PalindromeTrait());
+    // this.addExtraTrait(new Block9Trait());
+    // this.addExtraTrait(new Block78Trait());
   }
 
   addTrait(trait: ITrait): void {
