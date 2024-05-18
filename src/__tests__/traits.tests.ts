@@ -6,6 +6,10 @@ import { LegendaryTrait } from '../model/traits/rodarmorTraits/LegendaryTrait';
 import { MythicTrait } from '../model/traits/rodarmorTraits/MythicTrait';
 import { BlockCounter } from '../controller/utils/BlockCounter';
 
+console.log(BlockCounter.findBlock(2099515763999742))
+console.log(BlockCounter.calculateFirstOrdinalOfBlock(2543314))
+console.log("YOUOYOUHOUH")
+
 describe('Rarity Traits', () => {
 
     test('Uncommon Trait - First Sat of Block', () => {
@@ -13,6 +17,7 @@ describe('Rarity Traits', () => {
       expect(uncommonTrait.evaluate(0)).toContain("uncommon");
       expect(uncommonTrait.evaluate(1798400000000000)).toContain("uncommon");
       expect(uncommonTrait.evaluate(5000000000)).toContain("uncommon");
+      expect(uncommonTrait.evaluate(2099515763999742)).toContain("uncommon");
     });
 
     test('Rare Trait - First Sat of Difficulty Adjustment Period', () => {

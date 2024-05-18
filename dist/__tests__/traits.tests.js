@@ -7,12 +7,16 @@ const EpicTrait_1 = require("../model/traits/rodarmorTraits/EpicTrait");
 const LegendaryTrait_1 = require("../model/traits/rodarmorTraits/LegendaryTrait");
 const MythicTrait_1 = require("../model/traits/rodarmorTraits/MythicTrait");
 const BlockCounter_1 = require("../controller/utils/BlockCounter");
+console.log(BlockCounter_1.BlockCounter.findBlock(2099515763999742));
+console.log(BlockCounter_1.BlockCounter.calculateFirstOrdinalOfBlock(2543314));
+console.log("YOUOYOUHOUH");
 describe('Rarity Traits', () => {
     test('Uncommon Trait - First Sat of Block', () => {
         const uncommonTrait = new UncommonTrait_1.UncommonTrait();
         expect(uncommonTrait.evaluate(0)).toContain("uncommon");
         expect(uncommonTrait.evaluate(1798400000000000)).toContain("uncommon");
         expect(uncommonTrait.evaluate(5000000000)).toContain("uncommon");
+        expect(uncommonTrait.evaluate(2099515763999742)).toContain("uncommon");
     });
     test('Rare Trait - First Sat of Difficulty Adjustment Period', () => {
         const rareTrait = new RareTrait_1.RareTrait();
